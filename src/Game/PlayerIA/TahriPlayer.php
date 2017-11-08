@@ -47,9 +47,9 @@ class TahriPlayer extends Player
 		return $choice;
 	}
 
-        $choice = parent::scissorsChoice();
-        $choice = parent::paperChoice();
-        $choice = parent::rockChoice();
+        $scissors = parent::scissorsChoice();
+        $paper = parent::paperChoice();
+        $rock = parent::rockChoice();
 
 	$opponent_paper = $this->result->getStatsFor($this->opponentSide)['paper']/$this->result->getNbRound();
 	$opponent_scissors = $this->result->getStatsFor($this->opponentSide)['scissors']/$this->result->getNbRound();
@@ -59,6 +59,15 @@ class TahriPlayer extends Player
 	$my_scissors = $this->result->getStatsFor($this->mySide)['scissors']/$this->result->getNbRound();
 	$my_rock = $this->result->getStatsFor($this->mySide)['rock']/$this->result->getNbRound();
 
-        return $choice;
+	if ($opponent_paper >= 0.5)
+		return $scissors;
+
+	if ($opponent_scissors >= 0.5)
+		return $rock;
+
+	if ($opponent_rock >= 0.5)
+		return $paper;
+	
+        return $rock;
     }
 };
