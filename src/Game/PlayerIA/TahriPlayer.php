@@ -40,8 +40,24 @@ class TahriPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
+	
+	if ($this->result->getNbRound() == 0)
+	{
+		$choice = parent::paperChoice();
+		return $choice;
+	}
 
         $choice = parent::scissorsChoice();
+        $choice = parent::paperChoice();
+        $choice = parent::rockChoice();
+
+	$opponent_paper = $this->result->getStatsFor($this->opponentSide)['paper']/$this->result->getNbRound();
+	$opponent_scissors = $this->result->getStatsFor($this->opponentSide)['scissors']/$this->result->getNbRound();
+	$opponent_rock = $this->result->getStatsFor($this->opponentSide)['rock']/$this->result->getNbRound();
+
+	$my_paper = $this->result->getStatsFor($this->mySide)['paper']/$this->result->getNbRound();
+	$my_scissors = $this->result->getStatsFor($this->mySide)['scissors']/$this->result->getNbRound();
+	$my_rock = $this->result->getStatsFor($this->mySide)['rock']/$this->result->getNbRound();
 
         return $choice;
     }
