@@ -59,22 +59,22 @@ class TahriPlayer extends Player
 	$my_scissors = $this->result->getStatsFor($this->mySide)['scissors']/$this->result->getNbRound();
 	$my_rock = $this->result->getStatsFor($this->mySide)['rock']/$this->result->getNbRound();
 
-	if ($opponent_paper >= $opponent_scissors && $opponent_paper >= $opponent_rock)
+	if ($opponent_paper > $opponent_scissors && $opponent_paper > $opponent_rock)
 		return $scissors;
 
-	if ($opponent_scissors >= $opponent_paper && $opponent_scissors >= $opponent_rock)
+	if ($opponent_scissors > $opponent_paper && $opponent_scissors > $opponent_rock)
 		return $rock;
 
-	if ($opponent_rock >= $opponent_scissors && $opponent_rock >= $opponent_paper)
+	if ($opponent_rock > $opponent_scissors && $opponent_rock > $opponent_paper)
 		return $paper;
 
-	if ($my_paper >= $my_scissors && $my_paper >= $my_rock)
+	if ($my_paper > $my_scissors && $my_paper > $my_rock)
 		return $rock;
 
-	if ($my_scissors >= $my_paper && $my_scissors >= $my_rock)
+	if ($my_scissors > $my_paper && $my_scissors > $my_rock)
 		return $paper;
 
-	if ($my_rock >= $my_scissors && $my_rock >= $my_paper)
+	if ($my_rock > $my_scissors && $my_rock > $my_paper)
 		return $scissors;
 
 	/*if ($opponent_paper > = 0.4)
