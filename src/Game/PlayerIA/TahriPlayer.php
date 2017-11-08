@@ -77,6 +77,12 @@ class TahriPlayer extends Player
 	if ($my_rock > $my_scissors && $my_rock > $my_paper)
 		return $scissors;
 
+	if ($this->result->getLastChoiceFor($this->mySide) == 'paper')
+		return $rock;
+	else if ($this->result->getLastChoiceFor($this->mySide) == 'scissors')
+		return $paper;
+	else
+		return $scissors;
 	/*if ($opponent_paper > = 0.4)
 		return $scissors;
 
